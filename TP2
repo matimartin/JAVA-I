@@ -1,0 +1,274 @@
+/*
+*Laboratorio I
+*Trabajo Practico N2 - Condiciones Simples Y Compuestas
+*Autor: Martin, Hector Matias
+*Ultima modficacion: 27/09/2014
+ */
+
+package tp2;
+
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Matias
+ */
+public class TP2 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        
+/* EJERCICIO 1) Leer 2 números; si son iguales que los multiplique, si el primero es mayor que el segundo
+que los reste y si no que los sume.*/
+    
+        
+        String cadena_a;
+        String cadena_b;       
+        
+        cadena_a = JOptionPane.showInputDialog("Ingrese el primer numero");
+        cadena_b = JOptionPane.showInputDialog("Ingrese el segundo numero");
+        
+        int a = Integer.parseInt(cadena_a);
+        int b = Integer.parseInt(cadena_b);        
+        
+        if (a == b)
+            System.out.println("Los numeros ingresados son iguales, se multiplican: "+a*b);
+        else   
+            if (a > b)
+                System.out.println("El primer numero es mayor que el segundo, se restan: "+(a-b));
+            else
+                System.out.println("El segundo numero es mayor que el primero, se suman: "+(a+b));                   
+            
+/* EJERCICIO 2) Leer tres números diferentes e imprimir el número mayor de los tres.*/
+        
+        String cadena_num1;
+        String cadena_num2;
+        String cadena_num3;
+                
+        cadena_num1 = JOptionPane.showInputDialog("Ingrese el primer numero");
+        cadena_num2 = JOptionPane.showInputDialog("Ingrese el segundo numero");
+        cadena_num3 = JOptionPane.showInputDialog("Ingrese el tercer numero");
+        
+        int num1 = Integer.parseInt(cadena_num1);
+        int num2 = Integer.parseInt(cadena_num2);
+        int num3 = Integer.parseInt(cadena_num3);
+        
+        if (num1 > num2 && num1 > num3)
+            System.out.println("el mayor numero ingresado es: "+num1);
+        else
+            if (num2 > num1 && num2 > num3)
+                System.out.println("El mayor numero ingresado es:"+num2);
+            else
+                System.out.println("El mayor numero ingresado es: "+num3);
+                    
+        
+ /*EJERCICIO 3) Determinar la cantidad de dinero que recibirá un trabajador por concepto de las horas extras
+trabajadas en una empresa, sabiendo que cuando las horas de trabajo exceden de 40, el resto
+se consideran horas extras y que estas se pagan al doble de una hora normal cuando no
+exceden de 8; si las horas extras exceden de 8 se pagan las primeras 8 al doble de lo que se
+pagan las horas normales y el resto al triple.*/
+        
+        String cadena_hs;
+        String dinero;
+        
+        dinero = JOptionPane.showInputDialog("Cuanto gana por hora?");
+        cadena_hs = JOptionPane.showInputDialog("Cuantas horas trabajo esta semana?");
+        
+        int hs_trabajadas = Integer.parseInt(cadena_hs);
+        int money = Integer.parseInt(dinero);
+        int hs_extra = hs_trabajadas - 40;     
+        
+        if (hs_trabajadas > 40 && hs_trabajadas <= 48)
+            System.out.println("Usted trabajo "+(hs_extra)+" horas extras, debe cobrar: $"+(hs_trabajadas*money+hs_extra*money*2));
+        else
+            if (hs_trabajadas > 48)
+                System.out.println("Usted trabajo "+hs_extra+" horas extra, debe cobrar: $"+(hs_trabajadas*money+hs_extra*money*3));
+        else
+                System.out.println("Usted trabajo "+hs_trabajadas+" horas, debe cobrar: $"+hs_trabajadas*money);
+          
+
+/* EJERCICIO 4) Calcular la utilidad que un trabajador recibe en el reparto anual de utilidades si este se le
+asigna como un porcentaje de su salario mensual que depende de su antigüedad en la
+empresa de acuerdo con la siguiente tabla:
+    Tiempo                                Utilidad
+Menos de 1 año                          5 % del salario
+1 año o más y menos de 2 años           7% del salario
+2 años o más y menos de 5 años          10% del salario
+5 años o más y menos de 10 años         15% del salario
+10 años o más                           20% del salario
+        */
+        
+        
+        String length_of_service;
+        String percentage;
+        
+        percentage = JOptionPane.showInputDialog("Coloque aqui su sueldo anual");
+        length_of_service = JOptionPane.showInputDialog("Cuantos anios lleva trabajando en la empresa?");
+        
+        int antiguedad = Integer.parseInt(length_of_service);
+        int porcentaje = Integer.parseInt(percentage);
+                
+        if (antiguedad < 1)
+            System.out.println("Su utilidad es del 5%. Total: $"+0.05*porcentaje);
+        else
+            if (1 <= antiguedad && antiguedad <  2)
+                System.out.println("Su utilidad es del 7%. Total: $"+0.07*porcentaje);
+            else
+                if (2 <= antiguedad && antiguedad < 5)
+                    System.out.println("Su utilidad es del 10%. Total: $"+0.1*porcentaje);
+                else
+                    if (5 <= antiguedad && antiguedad < 10)
+                        System.out.println("Su utilidad es del 15%. Total: $"+0.15*porcentaje);
+                    else
+                        if (antiguedad >= 10)
+                            System.out.println("Su utilidad es del 20%. Total: $"+0.2*porcentaje);
+                        else
+                            System.out.println("Por favor, ingrese un valor valido");
+                            
+                            
+/* EJERCICIO 5) El ANSES requiere clasificar a las personas que se jubilaran en el año de 2010. Existen tres
+tipos de jubilaciones: por edad, por antigüedad joven y por antigüedad adulta.
+Las personas adscritas a la jubilación por edad deben tener 60 años o más y una antigüedad
+en su empleo de menos de 25 años.
+Las personas adscritas a la jubilación por antigüedad joven deben tener menos de 60 años y
+una antigüedad en su empleo de 25 años o más.
+Las personas adscritas a la jubilación por antigüedad adulta deben tener 60 años o
+más y una antigüedad en su empleo de 25 años o más.
+Determinar en qué tipo de jubilación, quedara adscrita una persona.
+        */       
+                
+        String edad, antiguedad_empleo, inizio_s;
+        int inizio = 1;
+        
+        while (inizio == 1){
+            
+        inizio_s = JOptionPane.showInputDialog("Elija opcion:\n(1) Continuar\n(0) Salir");
+        edad = JOptionPane.showInputDialog("Que edad tiene?");
+        antiguedad_empleo = JOptionPane.showInputDialog("Cuanto anios lleva trabajando?");
+        
+        inizio = Integer.parseInt(inizio_s);
+        int age = Integer.parseInt(edad);
+        int length_service = Integer.parseInt(antiguedad_empleo);
+        
+        switch(inizio){
+            
+            case 1:
+        
+        if (age >= 60 && length_service < 25)
+            System.out.println("Usted esta adscripto a la jubilacion por edad");
+        else
+            if (age < 60 && length_service >= 25)
+                System.out.println("Usted esta adscripto a la jubilacion por antiguedad joven");
+            else
+                if(age >= 60 && length_service >= 25)
+                    System.out.println("Usted esta adscripto a la jubilacion por antiguedad adulta");
+
+        break;
+                
+            case 2:
+                System.out.println("Hasta luego!!!");
+                break;
+            default:
+                System.out.println("Opcion no valida");
+                
+        }   //Fin switch
+        }   // Fin bucle while 
+        
+        /*EJERCICIO 6) Mostrando un menú, con opciones numeradas, y pidiendo al operador que elija una opción
+del mismo, vuelva a resolver los ejercicios 3, 4 y 5, utilizando la estructura SEGÚN CASO.*/
+        
+// EJERCICIO 6.3
+        
+     String horas_s, sueldo_s, inicio_s;
+     int sueldo, horas, hs_extraa, inicio = 1;
+     double hs_doble, hs_triple;
+     
+     while (inicio == 1){   // Comienzo del bucle while
+     
+     inicio_s = JOptionPane.showInputDialog("Elija:\n(1) Para Continuar\n(2) Para salir");
+     inicio = Integer.parseInt(inicio_s);
+     
+     switch (inicio){   // Comienzo switch
+         case 1:
+             sueldo_s = JOptionPane.showInputDialog("Cual es su sueldo?");
+             horas_s = JOptionPane.showInputDialog("Cuantas horas trabajo?");
+             
+             sueldo = Integer.parseInt(sueldo_s);
+             horas = Integer.parseInt(horas_s);
+             hs_extraa = horas - 40;
+             hs_doble = sueldo+hs_extra*(sueldo*2);
+             hs_triple = sueldo+hs_extra*(sueldo*3);        
+             
+             if (horas < 40)
+                 JOptionPane.showMessageDialog(null, "Usted no trabajo hs extra. Sueldo: $"+sueldo);
+             else
+                if (horas >= 40 && horas <48)
+                     
+                     JOptionPane.showMessageDialog(null, "Usted trabajo: "+hs_extraa+"horas extras\nSu sueldo es: $"+hs_doble);
+                else
+                    if (horas >= 48)
+                        JOptionPane.showMessageDialog(null, "Usted trabajo"+hs_extraa+"horas extra\nSu sueldo es: $"+hs_triple);
+                        else
+                        System.out.println("ingrese datos validos");
+            break;
+             
+         case 2:
+             JOptionPane.showMessageDialog(null, "Hasta luego!! vuela prontos!  :) ");
+             
+             break;
+             
+             default:
+                 JOptionPane.showMessageDialog(null, "Opcion no valida");
+                 inicio = 1;
+    
+     }  // fin switch
+     }  //fin while 
+     
+
+// EJERCICIO 6.4
+     
+     String antiguedad_s, salario_s, start_s;
+     int salario, start = 1;
+     
+     while (start == 1){    // comienzo del blucle while
+         
+         start_s = JOptionPane.showInputDialog("Que antiguedad lleva en la empresa?\n(1)Menos de 1 anio\n(2)Entre 1 y 2 anios\n(3)Entre 2 y 5 anios\n(4)Ente 5 y 10 anios\n(5)Mas de 10 anios\n(0)Salir");
+         salario_s = JOptionPane.showInputDialog("Cual es su salario anual?");
+         start = Integer.parseInt(start_s);
+         salario = Integer.parseInt(salario_s);
+         
+         switch (start){
+             case 1:
+                 JOptionPane.showConfirmDialog(null, "Usted lleva menos de 1 anio trabajando. Su utilidad es del 5%: $"+(salario+salario*0.05));
+                 break;
+             case 2:
+                 JOptionPane.showMessageDialog(null, "Usted lleva entre 1 y 2 anios de trabajo. Su utilidad es del 7%: $"+(salario+salario*0.07));
+                 break;
+             case 3:
+                 JOptionPane.showMessageDialog(null, "Usted lleva entre 2 y 5 anios de trabajo. Su utilidad es del 10%: $"+(salario+salario*0.1));
+                 break;
+             case 4:
+                 JOptionPane.showMessageDialog(null, "Usted lleva entre 5 y 10 anios de trabajo. Su utilidad es del 15%: $"+(salario+salario*0.15));
+                 break;
+             case 5:
+                 JOptionPane.showMessageDialog(null, "Usted lleva mas de 10 anios trabajando. Su utilidad es del 20%: $"+(salario+salario*0.2));
+                 break;
+             case 0:
+                 JOptionPane.showMessageDialog(null, "Usted ha elejido salir. Hasta luego!");
+                 break;
+             default:
+                 JOptionPane.showMessageDialog(null, "Opcion no valida");       
+                 
+            }  //fin sentencia switch
+         
+        }  // fin del bucle while
+     
+
+       
+     
+    }   // fin del metodo main
+    
+}   // Fin de la class TP2
