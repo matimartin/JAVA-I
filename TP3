@@ -1,0 +1,300 @@
+*
+* UTN - Laboratorio I - Trabajo Practico N3 - Bucles
+* Autor: Martin, Hector Matias
+* Ultima modficacion: 03/11/2014
+ */
+
+package tp3;
+
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author matias
+ */
+public class TP3 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+/*EJERCICIO 1) Pedir que se ingrese por teclado un número y mostrar la tabla de multiplicar completa del 0 al
+10. Imprimir el multiplicando, el multiplicador y el producto.
+       
+      
+        int numero1, resultado1, i;
+        String numero_s;
+        
+        numero_s = JOptionPane.showInputDialog("Ingrese un numero, para mostrar su tabla: ");
+        
+        numero1 = Integer.parseInt(numero_s);
+        
+        for(i = 0; i <= 10; i++){        
+        resultado1 = numero1 * i;         
+        System.out.println(+numero1+ " x " +i+ " = " +resultado1);
+    
+    }   // Fin bucle for ejercicio 1.
+        
+/* EJERCICIO 2) Leer 10 números y obtener su cuadrado. 
+       
+        int numero2, resultado2;
+        String numero2_s;
+              
+        for(numero2 = 1; numero2 <=10; numero2++){
+            numero2_s = JOptionPane.showInputDialog("Ingrese un numero para mostrar su cuadrado: ");
+            numero2 = Integer.parseInt(numero2_s);
+            resultado2= numero2*numero2;
+            System.out.println(numero2+ " su cuadrado es: " +resultado2);
+        
+        } // Fin bucle for ejercicio 2.
+       
+ /*EJERCICIO 3) Leer 10 números e imprimir solamente los múltiplos de 2. 
+        
+        int numero3, j=0;
+        String numero3_s;
+        
+        for(j = 0; j <= 9; j++){
+            numero3_s = JOptionPane.showInputDialog("Ingrese un numero");
+            numero3 = Integer.parseInt(numero3_s);
+            
+            if(numero3 % 2 == 0)
+                System.out.println(numero3 + " es multiplo de dos");
+       
+        }   // Fin bucle for
+       
+    
+/* EJERCICIO 4) Leer 20 números e imprimir cuántos son positivos, cuántos negativos y cuántos neutros.
+           
+        int num4, k, cont_par=0, cont_impar=0, cont_nul=0;
+        String num4_s;
+        
+        for(k=1; k <= 20; k++){
+            num4_s = JOptionPane.showInputDialog("Ingrese un numero");
+            num4 = Integer.parseInt(num4_s);
+            
+            if(num4 > 0){
+                cont_par ++;
+                System.out.println("Se acumularon " +cont_par+ " numeros positivos");
+            }else{
+                if(num4 < 0){
+                    cont_impar ++;
+                System.out.println("Se acumularon " +cont_impar+ " numeros negativos");
+                }else
+                    cont_nul ++;
+                    System.out.println("se acumularon " +cont_nul+ " numeros nulos");
+                        
+            }   // Fin else  
+            
+        }   // Fin bucle for ejercicio 4
+
+/*EJERCICIO 5) Leer 15 números negativos y convertirlos a positivos e imprimir dichos números.
+        
+        int num5, numpossitive, i;
+        String num5_s;
+        
+        for(i=0; i<=14; i++){
+        num5_s = JOptionPane.showInputDialog("Ingrese un numero negativo");
+        num5 = Integer.parseInt(num5_s);
+        
+        numpossitive = num5*(-1);
+        
+        if(num5<0)
+            System.out.println("el positivo de "+num5+" es: "+numpossitive);
+        else
+                System.out.println(num5+ " No es negativo");
+        
+        }   // Fin bucle for ejercicio 5
+        
+ /*EJERCICIO 6) Suponga que se tiene un conjunto de calificaciones de un grupo de 40 alumnos. Realizar un 
+algoritmo para calcular la calificación media y la calificación más baja de todo el grupo.
+        
+        int calificacion, media=0, masbaja=100, promedio, i;
+        String calificacion_s;
+        
+        for(i=1; i<=4; i++){    // i debe ser <=40 pero son demasiadas notas para probar el programa
+            calificacion_s = JOptionPane.showInputDialog("Ingrese calificacion:");
+            calificacion = Integer.parseInt(calificacion_s);
+            
+            media = (media+calificacion);
+            
+            if(calificacion <= masbaja)
+                masbaja = calificacion;
+           
+        }   // Fin bucle for ejercicio 6
+        
+        promedio = media/4;     // Otra vez ese 4 debe ser reemplazado por un 40
+            
+        System.out.println("La calificacion media es: "+promedio);
+        System.out.println("La calificacion mas baja es: "+masbaja);
+            
+/*EJERCICIO 7) Simular el comportamiento de un reloj digital, imprimiendo la hora, minutos y segundos de un
+día desde las 0:00:00 horas hasta las 23:59:59 horas.
+        
+        int hs=0, min=0, seg=0;   
+        
+        while(true){
+            seg = seg +1;
+            if(seg > 59){
+                min = min + 1;
+                if(min > 59){
+                    hs = hs + 1;
+                }   // Fin primer elseif
+            }   // Fin segundo elseif
+            
+            System.out.println("hora: "+hs+" minutos: "+min+" segundos: "+seg);
+         
+        }   // Fin bucle while ejercicio 7
+        
+        
+/*EJERCICIO 8) Encontrar el menor valor de un conjunto de n números dados.
+              
+        int n, newvalor, valor=99999, i;
+        String newvalor_s, pregunta_s;
+        
+        pregunta_s = JOptionPane.showInputDialog("cuantos valores va a ingresar?");
+        n = Integer.parseInt(pregunta_s.trim());
+        
+        for(i=0; i <= n; i++ ){
+            newvalor_s = JOptionPane.showInputDialog("Ingrese un valor:");
+            newvalor = Integer.parseInt(newvalor_s);
+            
+            if(newvalor < valor)
+                valor=newvalor;            
+            
+        }   // Fin bucle for ejercicio 8
+        
+        System.out.println("el valor mas chico ingresado es: "+valor);
+      
+/*EJERCICIO 11) Una persona desea invertir su dinero en un banco, el cual le otorga un 2% de interés. 
+¿Cuál será la cantidad de dinero que esta persona tendrá al cabo de un año si la ganancia de cada mes es 
+reinvertida? 
+        
+        int i;
+        String inversion_s;
+        double inversion, inversionF, gananciaF;
+        
+        inversion_s = JOptionPane.showInputDialog("cual es su inversion inicial?");
+        inversion = Double.parseDouble(inversion_s);
+        
+        gananciaF = inversion + inversion * 0.02;
+        inversionF = gananciaF;
+        JOptionPane.showMessageDialog(null, "su ganancia al 1 mes, sera de: $i"+inversionF);
+        
+        for(i=1; i<=12; i++){
+            
+            inversionF = inversionF + (inversionF * (0.02));
+            
+        JOptionPane.showMessageDialog(null, "Su ganancia al " + (i+1) + " mes, sera de: $"+inversionF);
+        
+        }   // Fin bucle for
+        
+
+/*EJERCICIO 12) En una tienda de descuento las personas que van a pagar el importe de su compra llegan a la
+caja y sacan una bolita de color, que les dirá que descuento tendrán sobre el total de su compra. Determinar
+la cantidad que pagará cada cliente desde que la tienda abre hasta que cierra. Se sabe que si el color de
+la bolita es roja el cliente obtendrá un 40% de descuento; si es amarilla un 25% y si es blanca no obtendrá 
+descuento.
+
+        String inicio_s, color_s, compra_s;
+        int inicio=1;
+        double compra, descuento;
+        char color;
+        
+        while(inicio == 1){
+            inicio_s = JOptionPane.showInputDialog("Nueva compra\n(1)SI\n(2)NO");
+            inicio = Integer.parseInt(inicio_s);
+            
+            switch(inicio){
+                case 1:
+                    compra_s = JOptionPane.showInputDialog("Ingrese el valor de su compra");
+                    compra = Double.parseDouble(compra_s);
+                    color_s = JOptionPane.showInputDialog("Elija el color de su bola\n(R)roja\n(A)amarilla\n(B)blanca");
+                    color = color_s.trim().toUpperCase().charAt(0);
+                    
+                    if(color == 'R'){
+                        descuento = compra - compra *0.4;
+                        System.out.println("Su descuento es de 40%\nTOTAL: $"+descuento);
+                    }else{
+                        if(color == 'A'){
+                            descuento = compra - compra*0.25;
+                            System.out.println("su descuento es del 25%\nTOTAL: $"+descuento);
+                        }else{
+                            if(color == 'B'){
+                                System.out.println("Usted no tiene descuento.\nTOTAL: $"+compra);
+                            }else
+                                System.out.println("Opcion No Valida\nVuela a intentarlo");
+                                
+                        }
+                    }
+                break;
+                case 2:
+                    System.out.println("Hasta luego.\nVuelva Pronto!!!");
+                    break;
+                default:
+                    System.out.println("Opcion No Valida");
+                    inicio = 1;                         
+                        
+            }   // Fin switch
+          
+        }   // Fin bucle while
+        
+/*EJERCICIO 14) Un teatro otorga descuentos según la edad del cliente. Determine la cantidad de dinero que el
+teatro percibe por cada una de las categorías. Considere que los niños menores de 5 años no pueden entrar 
+al teatro y que existe un precio único en los asientos que deberá consultar con la administración del 
+teatro. Los descuentos se hacen tomando en cuenta el siguiente cuadro:
+
+        Categoría        Edad                 Descuento
+            1           05 - 14                 35 %
+            2           15 - 19                 25 %
+            3           20 - 45                 0%
+            4           46 - 65                 25 %
+            5           66 en adelante          35 %
+        */
+ 
+/* EJERCICIO 15) En la Cámara de n Diputados se levanta una encuesta con todos los integrantes con el 
+fin de determinar qué porcentaje de ellos está a favor del Tratado de Libre Comercio, qué 
+porcentaje está en contra y qué porcentaje se abstiene de opinar.   */  
+        
+        int inizio=1, pregunta, voto_afavor=0, voto_encontra=0, voto_seabstiene=0;
+        String inizio_s, pregunta_s;
+        
+        while(inizio == 1){
+            inizio_s = JOptionPane.showInputDialog("Usted va a votar? Ingrese\n(1) SI\n(2) NO");
+            inizio = Integer.parseInt(inizio_s);
+            
+            switch(inizio){
+                case 1:
+                    pregunta_s = JOptionPane.showInputDialog("vote:\n(1) A favor\n(2) En contra\n(3) Se abstiene a votar");
+                    pregunta = Integer.parseInt(pregunta_s);
+                    
+                    if(pregunta == 1){
+                        voto_afavor = voto_afavor + 1;
+                        System.out.println("votos a favor: "+voto_afavor);
+                    }else{
+                        if(pregunta == 2){
+                            voto_encontra = voto_encontra + 1;
+                            System.out.println("votos en contra: "+voto_encontra);
+                        }else{
+                            if(pregunta == 3){
+                                voto_seabstiene = voto_seabstiene + 1;
+                                System.out.println("votos abstenidos: "+voto_seabstiene);
+                            }
+                        }
+                    }
+                break;
+                case 2:
+                    System.out.println("Hasta Luego!!!");
+                    break;
+                default:
+                    System.out.println("Opcion no valida");
+                    inizio = 1;
+                    
+            }   // Fin switch
+            
+        } // Fin bucle while ejercicio 15
+        
+        
+    }   // Fin public static void main
+            
+}       // Fin public class
