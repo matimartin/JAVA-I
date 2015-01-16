@@ -1,0 +1,338 @@
+/*
+ * Laboratorio I
+ * Trabajo Practico N5 - Procedimientos y funciones (metodos)
+ * Autor: Martin Hector Matias
+ * Ultima modificacion: 04/11/2014
+ */
+
+package tp5;
+
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author matias
+ */
+public class TP5 {
+    
+    static boolean vf;  //  Declaracion de variables globales(funcionan para todos lo metodos)
+    static float neg, totalart, preciototal, sup_cuadrado, sup_rectangulo, sup_circulo;
+    static int acumulador=0;
+    static String producto_s;
+   
+    public static void main(String[] args) {
+        
+/*
+* Ejercicio extra: Recibiendo 10 valores por pantalla, realice para cada uno de ellos las sgtes tareas:
+* 1) revisar si el nro es par.
+* 2) revisar si es mayor que cero.
+* 3) Acumularlos      
+     
+        String ingreso;
+        int dato;
+                
+        for(int i=1; i<=10; i++){
+        
+            ingreso = JOptionPane.showInputDialog("Ingrese un numero: ");
+            dato = Integer.parseInt(ingreso.trim());
+            
+            si_es_par(dato);    // Llama al metodo "si_es_par"
+            es_o_no_cero(dato); // llama al metodo "si_es_impar"
+            acumulador = guarda(dato);  // Llama al metodo guarda
+            System.out.println("Se acumulan: " +acumulador);
+            
+        }   // Fin bucle for
+        
+    }   // Fin main
+    
+    public static void si_es_par (float a){   // "a" es un parametro real
+        
+        if ((int) a % 2 == 0)
+            System.out.println("es par");
+        else
+            System.out.println("Es impar");
+    
+    }   // Fin metodo "si_es_par"
+    
+    public static void es_o_no_cero (int x){
+        
+        if (x > 0)
+            System.out.println("es positivo");
+        else
+            System.out.println("es negativo");
+        
+    }   // Fin es_o_no_cero
+    
+    public static int guarda (int f){
+    
+        acumulador = acumulador + f;
+        return acumulador;
+    
+
+    }   // Fin metodo int guarda        
+        
+/* EJERCICIO 1) Leer 2 números; si son iguales que los multiplique, si el primero es mayor que el segundo 
+que los reste y si no que los sume. Donde una función recibe como parámetro el número a evaluar y lo 
+almacena en una variable estática o global como el mayor encontrado.
+        
+        String num1_s, num2_s;
+        float num1, num2;
+        
+        num1_s = JOptionPane.showInputDialog("Ingrese el primer numero");
+        num2_s = JOptionPane.showInputDialog("Ingrese el segundo numero");
+        
+        num1 = Float.parseFloat(num1_s);
+        num2 = Float.parseFloat(num2_s);
+        
+        compara(num1, num2);
+        
+    }   // Fin Public static void main ejercicio 1
+        
+    public static void compara(float a, float b){
+        
+        if(a == b){
+            System.out.println("Numero iguales: " +(a*b));
+        }else{
+            if(a > b){
+                System.out.println("El primero es mayor que el segundo" +(a-b));
+            }else{
+                if(a < b){
+                    System.out.println("El primero es menor que el segundo: "+(a+b));
+                }else{
+                    System.out.println("Usted no ha ingresado numeros corectos");    
+                }   // Fin elseIf
+            }   // Fin elseIf
+        }   // Fin elseIf
+        
+    }   // Fin metodo "compara"
+ 
+/*EJERCICIO 2) Leer 10 números e imprimir solamente los múltiplos de 2. Donde una función reciba como 
+parámetro el número, lo evalúe determinando si es múltiplo de 2 y devuelva un boolean, indicando si es 
+múltiplo o no. El programa principal lo mostrará de acuerdo al valor boolean devuelto.
+        
+        int num, i;
+        String num_s;
+        
+        for(i=0; i<=9; i++){
+        
+        num_s = JOptionPane.showInputDialog("Ingrese un numero");
+        num = Integer.parseInt(num_s);
+        
+        vf = evalua(num);   // Llama al metodo "evalua"
+        
+            System.out.println("Es "+num+" multiplo de dos? => "+vf);
+        
+        }   // Fin bucle for
+        
+    }   // Fin metodo main ejercicio 2
+    
+    public static boolean evalua(int x){
+        
+        if(x % 2 == 0){
+            vf = true;
+        }else{
+            vf = false;
+        }   // Fin else
+        
+        return vf;
+        
+    }   // Fin metodo evalua
+   
+ /*EJERCICIO 3) Leer 15 números negativos y convertirlos a positivos e imprimir dichos números. Donde una
+función reciba el número negativo (que ya fue evaluado y comprobado por el programa principal que
+efectivamente era un número negativo), lo convierta a positivo y lo devuelva convertido.
+El programa principal lo mostrará.
+        
+        float num, i;
+        String num_s;
+        
+        for(i=0; i<=14; i++){
+            
+        num_s = JOptionPane.showInputDialog("Ingrese un numero negativo");
+        num = Float.parseFloat(num_s);
+        
+        if(num < 0){
+            neg = num;
+            System.out.println("El numero positivo de "+num+" es: "+neg);
+        }else{
+                System.out.println(num+" No es un numero negativo");
+        }   // Fin else
+        
+        }   // Fin bucle for
+    
+    }   // Fin public static void main ejercicio 3
+    
+    public static float convertir(float x){
+        
+        neg = x*(-1);
+        
+        return neg;
+        
+    }   // Fin metodo convertir
+    
+/*EJERCICIO 4) En un supermercado una clienta pone en su carrito los artículos que va tomando de los
+estantes. La señora quiere asegurarse de que el cajero le cobre bien lo que ella ha comprado, por lo que
+cada vez que toma un articulo anota su precio junto con la cantidad de artículos iguales que ha tomado
+y determina cuánto dinero gastará en ese artículo; a esto, le suma lo que ira gastando en los demás 
+artículos, hasta que decide que ya tomó todo lo que necesitaba. Ayúdele a esta señora a obtener el total
+de sus compras.
+    a) Una función que reciba como argumentos el precio de un artículo determinado y la cantidad comprada
+del mismo, y devuelva el precio total a pagar por ello.
+    b) Un procedimiento que reciba el precio total calculado para cada artículo y lo vaya acumulando en
+un sumador total.
+    c) Un procedimiento que reciba: nombre de artículo, precio unitario, cantidad, precio total y muestre
+en pantalla esos datos. 
+Al terminar de ingresar artículos, el programa principal deberá mostrar la suma total a pagar.
+        
+        int inicio=1;
+        String inicio_s, precio_s, cantidad_s;
+        float precio, cantidad;
+        
+        while(inicio == 1){
+        inicio_s = JOptionPane.showInputDialog("Elija:\n(1) Nuevo Producto\n(2) Calcular\n(3) Mostrar Compra total\n(4) Salir");
+        inicio = Integer.parseInt(inicio_s);
+        
+        switch(inicio){
+            
+            case 1:
+                producto_s = JOptionPane.showInputDialog("Ingrese el nombre del articulo");
+                precio_s = JOptionPane.showInputDialog("Ingrese el precio del articulo");
+                cantidad_s = JOptionPane.showInputDialog("Ingrese la cantidad de articulos");
+                
+                precio = Float.parseFloat(precio_s);
+                cantidad = Float.parseFloat(cantidad_s);
+                
+                total_articulo(precio, cantidad);
+                
+                System.out.println("El total del articulo es: "+totalart);               
+                break;
+            case 2:
+                precio_total(preciototal);
+                
+                System.out.println("Total a pagar: "+preciototal);
+                break;
+            case 3:         
+                mostrar(producto_s);   
+                break;
+            case 4:
+                System.out.println("Hasta luego!!!");
+                break;
+            default:
+                System.out.println("Opcion no valida");
+                inicio = 1;
+                
+        }   // Fin switch
+                
+        }   // Fin bucle while       
+        
+        System.out.println("Suma total: " +(preciototal+totalart));
+        
+    }   // Fin public static void main ejercicio 4
+    
+        public static float total_articulo(float p, float c){
+                       
+            totalart = (p*c);
+            
+            return totalart;
+                       
+        }   // Fin metodo total ejercicio 4
+        
+        public static float precio_total(float z){
+        
+                preciototal = totalart + z;
+                
+                return preciototal;
+                        
+        }   // Fin metodo precio_Total ejercicio 4
+        
+        public static void mostrar(String producto_s){
+            
+            System.out.println("producto: "+producto_s);
+                       
+        }   // Fin metodo mostrar ejercicio 4
+        
+EJERCICIO 5) Teniendo el menú de opciones: Usted puede calcular la superficie para las figuras:
+    1. Cuadrado.
+    2. Rectángulo.
+    3. Círculo.
+    4. Salir y terminar.
+        
+El programa deberá calculas las superficies prometidas siguiendo los siguientes pasos:
+
+    a) Cada opción debe enviar la ejecución del programa a una función que, reciba como parámetros los
+datos necesarios para el cálculo de la superficie correspondiente y devolver el resultado.
+
+    b) El resultado de la función debe ser recibido (como parámetro) por un procedimiento que, según la
+opción elegida por el operador, mostrará un mensaje acompañando a tal resultado.
+
+    c) El programa principal debe tener control sobre la opción elegida por el operador, ya que si elige una 
+opción inexistente, debe emitir un mensaje de advertencia y volver a mostrar el menú. Este último puede 
+ser mostrado por un procedimiento o por el programa principal.*/
+        
+        int inicio=1;
+        String inicio_s, pregunta_cuadrado_s,pregunta_rectangulo_s, base_s, altura_s, radio_s;
+        float lado, base, altura, radio;
+        
+        while(inicio == 1){
+            inicio_s = JOptionPane.showInputDialog("elija:\n(1)Cuadrado\n(2)Rectangulo\n(3)Circulo\n(4)Salir");
+            inicio = Integer.parseInt(inicio_s);
+            
+            switch(inicio){
+                case 1:
+                    pregunta_cuadrado_s = JOptionPane.showInputDialog("Ingrese el lado del cuadrado");
+                    lado = Float.parseFloat(pregunta_cuadrado_s.trim());
+                    cuadrado(lado);
+                    inicio = 1;
+                    break;
+                    
+                case 2:
+                    base_s = pregunta_rectangulo_s = JOptionPane.showInputDialog("Ingrese la base del triangulo:");
+                    base = Float.parseFloat(base_s.trim());
+                    altura_s = JOptionPane.showInputDialog("Ingrese la altura del triangulo");
+                    altura = Float.parseFloat(altura_s);
+                    rectangulo(base, altura);
+                    inicio =1;
+                    break;
+                    
+                case 3:
+                    radio_s = JOptionPane.showInputDialog("Ingrese el radio del circulo");
+                    radio = Float.parseFloat(radio_s.trim());
+                    circulo(radio);
+                    inicio = 1;
+                    break;
+                case 4:
+                    System.out.println("Hasta luego\nVuela pronto!!!");
+                    break;
+                    
+                default:
+                    System.out.println("Opcion No valida\nVuelva a intentarlo");
+                    inicio = 1;
+                    
+            }   // Fin switch
+            
+        }   // Fin bucle while
+        
+    }   // Fin public static void main ejercicio 5
+    
+    public static float cuadrado(float c){
+        
+        sup_cuadrado = (c*c);
+        System.out.println("La superficie del cuadrado es: "+sup_cuadrado);
+        return sup_cuadrado;       
+    }   // Fin metodo cuadrado
+    
+   public static float rectangulo(float b, float a){
+        
+        sup_rectangulo = b*a;
+        System.out.println("La superficie del rectangulo es: "+sup_rectangulo);
+        return sup_rectangulo;        
+    }   // Fin metodo rectangulo
+   
+   public static float circulo(float r){
+       
+       sup_circulo = (float)3.14159265359*(r*r);
+       System.out.println("La superficie del circulo es: "+sup_circulo);
+       return sup_circulo;
+   }    // Fin metodo funcion circulo ejercicio 5
+        
+}   // Fin public class TP5
