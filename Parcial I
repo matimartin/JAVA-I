@@ -1,0 +1,98 @@
+/*
+* UTN
+* Laboratorio I
+* Evaluacion Parcial 1
+* Fecha: 29/09/2014
+* Alumno: Martin, Hector Matias
+ */
+
+package evaluacionparcial1;
+
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Matias
+ */
+public class EvaluacionParcial1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+ 
+/*
+  * Al intentar ejecutar el siguiente codigo funciona y compila correctamente, 
+  * Lo que hace es calcular la base de un triangulo mediante una formula: 
+  * (base*altura)/2, El resultado que indica es 6 (seis), y surge de la linea 
+  * 30, donde se encuentra la formula mencionada anteriormente utilizando las
+  * variables de tipo entero ingresadas en las lineas 27, 28, y 29, En la 
+  * linea 31 muestra el resultado por pantalla.
+ */ 
+
+        int base=3; //Primer variable declarada, es de tipo entero
+        int altura=4;   //Segunda variable declarada, es de tipo emtero
+        int resultado;  //Tercer variable declarada, es de tipo entero. Esta indicara posteriormente el resultado de la formula
+        resultado = base * altura / 2;  //Se declara la formula
+        System.out.println("El resultado es "+resultado);   //Se muestra por pantalla el resultado de la formula.
+        
+        
+/*
+ * El codigo mostrado a continuacion lo que es que a partir de dos valores
+ * asignados, en este caso de tipo String, muestra dichos valores en un orden, 
+ * luego a partir de una variable llamada Auxiliar se guarda el segundo valor en
+ * esta ultima variable para despues poder intercambiar los valores de las
+ * variables, y mostrarlos intercambiados
+ */       
+        
+        String primerValor, segundoValor, variableAuxiliar; //Se declaran las variables, estas son de tipo String
+        primerValor = "A";  // Se declara el valor que tendra la primer variable, esta va entre comillas por ser de tipo String
+        segundoValor = "B"; //  Se declara el valor que tendra la segunda variable, esta va entre comillas por ser de tipo String
+        System.out.println("Inicialmente: 1-" + primerValor + " 2-" + segundoValor);    //Imprime por pantalla el primer valor de la variable y a continuacion el valor de la segunda variable
+        variableAuxiliar = primerValor; // Se coloca el valor de la primer variable en la variable auxiliar, quedante la primer variable con un espacio "vacio"
+        primerValor = segundoValor; //Se coloca el valor de la segunda variable en la primer variable, quedando ahora la segunda variable "vacia" 
+        segundoValor= variableAuxiliar; // Finalmente se coloca el valor asignado en la variable auxiliar en la srgunda variable
+        System.out.println("Al final: 1-" + primerValor + " 2-"+ segundoValor); // Se imprimen las variables con los varores intercambiados
+        
+/*
+ * Entre la sentincia 3 y 4 escribiria while y switch - case para poder armar el menu de opciones.
+ * y luego la funcion acumulador.
+ * Antes del 3 colocaria unas variables de tipo String para poder iniciar el menu con JOptionPane.showInput...       
+ */       
+        
+        String inicio_s, base_s, altura_s;  //Variables de tipo String
+        int base1;  //Variable de tipo entero
+        int altura1;    //Variable de tipo entero
+        int resultado1; //Variable de tipo entero
+        int inicio=1;   //Variable de tipo entero
+        int acumulador=0;   //Variable de tipo entero para comenzar el acumulador
+        
+        while (inicio == 1){
+            inicio_s = JOptionPane.showInputDialog("Elija Opcion:\n(1) Calcular\n(2) Salir");
+            inicio = Integer.parseInt(inicio_s);
+            
+            switch (inicio){
+                case 1:
+                    base_s = JOptionPane.showInputDialog("Ingrese el valor de la base del triangulo: ");
+                    altura_s = JOptionPane.showInputDialog("Ingrese el valor de la altura del triangulo");
+                    base1 = Integer.parseInt(base_s);
+                    altura1 = Integer.parseInt(altura_s);
+                    resultado1 = (base*altura)/2;
+                    JOptionPane.showMessageDialog(null, "Su valor es: "+resultado1);
+                    acumulador = acumulador + resultado;
+                    break;
+                case 2:   
+                    JOptionPane.showMessageDialog(null, "El total acumulado de las areas calculadas es de: " + acumulador + " \nHasta Luego!!!");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opcion No valida\nVuelva a intentarlo.");
+                    inicio = 1;
+
+        
+            } // Fin switch
+                    
+        }   // Fin bucle while
+        
+        }   // Fin funcion main
+        
+    }   // Fin class
