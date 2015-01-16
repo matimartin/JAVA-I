@@ -1,0 +1,187 @@
+/*
+*Laboratorio I
+*Repaso Parcial 1
+*Autor: Martin, Hector Matias
+*Ultima modficacion: 29/09/2014
+ */
+
+package repasoparcial_1;
+
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Matias
+ */
+public class RepasoParcial_1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+/*
+Ejercicio: Calcular el numero de pulsaciones que debe tener una persona por cada 10 segundos de ejercicio
+aeróbico. La formula que se aplica cuando el sexo es femenino es:
+* Mujeres: FCmax = 214 – (0,8 x edad)
+* Hombres: FCmax = 209 – (0,7 x edad)
+*/
+        
+        String sexo_s, edad_s, inicio_s;
+        int edad, inicio=1;
+        char sexo; 
+        double FCmax;
+        
+        while (inicio == 1){
+        inicio_s = JOptionPane.showInputDialog("Que desea hacer?\n(1) Consulta\n(0) Salir");
+        inicio = Integer.parseInt(inicio_s);
+        
+        switch(inicio){
+                
+            case 1:
+                sexo_s = JOptionPane.showInputDialog("Elija su sexo:\n(M) Masculino\n(F) Femenino");
+                edad_s = JOptionPane.showInputDialog("Cual es su edad?");
+                edad = Integer.parseInt(edad_s);
+                sexo = sexo_s.trim().toUpperCase().charAt(0);
+                
+                 if (sexo == 'M'){
+                    FCmax = 209-(0.7*edad);
+                    JOptionPane.showMessageDialog(null, "su frecuencia cardiaca es: "+FCmax);
+                }else{
+                     if (sexo == 'F'){
+                        FCmax = 214-(0.8*edad);
+                        JOptionPane.showMessageDialog(null,"Su frecuencia cardiaca es: "+FCmax);
+                    }else
+                        JOptionPane.showMessageDialog(null, "Opcion No Valida\nVuelva a intentarlo");    
+                }
+               break;
+            case 0:
+                JOptionPane.showMessageDialog(null, "Hasta luego!!!\nVuelva prontos  :)");
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Opcion No Valida\nIntente nuevamente");
+                inicio = 1;
+        
+        }   //fin switch
+        
+        }   //fin bucle while
+        
+/*
+Ejercicio: Construya un programa que permita el ingreso de los precios de los
+productos comprados por un cliente y al terminar, muestre el total a
+pagar por la compra.
+Agregue al programa anterior, lo necesario para que se ingresen todos
+los clientes de una jornada.
+Coloque las instrucciones necesarias para que se cuenten los clientes
+que han pasado por la caja y la suma total de pagos. Al final del día se
+debe mostrar el número de clientes y el total de pagos.
+Realice los cambios necesarios para que, al iniciar el día se ingrese el
+día de la semana. En caso de ser jueves, se le descontará a cada cliente
+el 15% del total de su compra.
+*/     
+        
+        String compra_s, precio_s, start_s, inizio_s, dia_s;
+        int start=1, inizio=1, contador=0;
+        double precio, acumulador=0, total;
+        char compra, dia;
+        
+        dia_s = JOptionPane.showInputDialog("Indique el dia de la semana:\n(L)\n(M)\n(M)\n(J)\n(V)");
+        dia = dia_s.trim().toUpperCase().charAt(0);
+        
+        if (dia == 'J')
+            
+            total = acumulador*0.85;
+        
+        while (inizio == 1){
+        
+            inizio_s = JOptionPane.showInputDialog("Elija una opcion:\n(1) Nuevo cliente\n(2) Salir del programa");
+            inizio = Integer.parseInt(inizio_s);
+            
+        while (start == 1){
+            start_s = JOptionPane.showInputDialog("Elija un opcion:\n(1) Continuar\n(0) Salir");
+            start = Integer.parseInt(start_s);
+        
+        switch (start){
+            case 1:
+                compra_s = JOptionPane.showInputDialog("Desea realizar una compra?\n(S)\n(N)");
+                compra = compra_s.trim().toUpperCase().charAt(0);
+                
+                if (compra == 'S'){
+                    precio_s = JOptionPane.showInputDialog("Cuanto compro?");
+                    precio = Double.parseDouble(precio_s);
+                    acumulador = precio+acumulador;
+                    JOptionPane.showMessageDialog(null, "Su compra fue de: $"+acumulador);                    
+                }else{
+                    if (compra == 'N'){
+                        JOptionPane.showMessageDialog(null, "Gracias por su compra!!!");
+                        JOptionPane.showMessageDialog(null, "Su compra fue de: $"+acumulador);
+                    }else
+                        JOptionPane.showMessageDialog(null, "Opcion No Valida");
+                }
+                break;
+                
+            case 0:
+                JOptionPane.showMessageDialog(null, "Gracias por pasar\nVuelva pronto!!!");
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Opcion No Valida\nIntente Nuevamente");
+                
+        }   // Fin switch
+                
+        }   // Fin bucle while start
+        
+        JOptionPane.showMessageDialog(null, "El total del dia fue: $"+acumulador);
+        contador = contador + inizio;
+        JOptionPane.showMessageDialog(null, "Cantidad de clientes: "+contador);
+        
+        }   // Fin bucle while inizio
+       
+        
+/*
+Ejercicio: Una frutería ofrece las manzanas a $ 5.- el Kg., con descuento según la siguiente tabla:
+
+%                   DESCUENTO
+ 0   -  2               0%
+2.01 -  5               10%
+5.01 -  10              15%
+10.01 en adelante       20%
+*/        
+        
+        
+        float kg;
+        char resp = 'S';
+        String kilogramos_s, pregunta_s;
+        
+        while (resp == 'S'){
+        
+            pregunta_s = JOptionPane.showInputDialog("¿Desea comprar mansanas?\n S/N");
+            resp = pregunta_s.trim().toUpperCase().charAt(0);
+            kilogramos_s = JOptionPane.showInputDialog("¿Cuantos kg de manzana quiere comprar?");
+            kg = Float.parseFloat(kilogramos_s);
+        
+           
+         if(kg <= 2){
+                System.out.println("Usted tiene 0% de descuento. Total a pagar: $ "+kg);
+         }else{
+            if(kg > 2 && kg <= 5){
+                    System.out.println("Usted tiene 10% de descuento. Total a pagar: $ "+kg*5*1.1f);
+            }else{
+                if(kg > 5 && kg < 10){
+                        System.out.println("Usted tiene 15% de descuento. Total a pagar: $ "+kg*5*1.15f);
+                }else{
+                    if(kg >= 10){
+                            System.out.println("Usted tiene 20% de descuento. Total a pagar: $ "+kg*5*1.2f);
+                    }else{
+                            System.out.println("Ingrese un valor valido");
+                            
+                    }
+                }
+            }
+        }
+         
+        }   // Fin bucle while
+        
+        
+}   // Fin Funcion main
+    
+}   // Fin class
