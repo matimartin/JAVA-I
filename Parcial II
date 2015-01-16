@@ -1,0 +1,138 @@
+/*
+ * Evaluacion Parcial 2 - Tema 3 - Laboratorio I - UTN
+ * Alumno: Martin Hector Matias - Legajo: 41002
+ * Fecha: 10/11/2014
+ */
+
+package parcial2;
+
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author matias
+ */
+
+public class MatinHectorTema3 {
+    
+    static int valneg;
+    public static int filaCol[][] = new int[10][10]; // Variables globales
+    public static int dim=5, proms=0, i, j, k;  // Variables globales   
+
+    /**
+     * @param args the command line arguments
+     */
+    
+public static void main(String[] args) {
+        
+/*1. Teniendo el siguiente programa, determine, a través de una función, cuántas veces la 
+variable q, toma un valor negativo. Tal cantidad al ser obtenida a través de cálculos se 
+transferirá al programa principal en una variable, y éste se encargará de mostrarla  */      
+       
+        int i, j ,k=3, l=15, m=10, q=0, contador=0; 
+
+        for (i=0; i<(l/k-k); i++){  //desde i=0; hasta i=2
+            for(j=k; j<l; j++){
+                q=(i-j)-2 ;
+                valneg = ValorNegativo(q);
+            }   // Fin bucle for
+
+            q=(k-l)+2;
+            valneg = ValorNegativo(q);
+            
+            for(j=-3; j<3; j++){
+                q=(i-j-k+l)-2 ;
+                valneg = ValorNegativo(q);
+            }
+            
+            contador++;
+            
+            q=(k-l)+2;
+            valneg = ValorNegativo(q);
+
+        }
+        
+        valneg = ValorNegativo(q);
+        System.out.println("La cantidad de veces que q es negativo es : " + valneg);
+        
+    }   // Fin public static void main ejercicio 1
+    
+    public static int ValorNegativo(int a){
+        if(a < 0)
+        valneg ++;
+        return valneg;
+    }   // Fin metodo funcion Valor negativo
+    
+/*2.a) Teniendo una matriz de n x n: muestre utilizando operaciones aritméticas,
+el elemento central de la matriz.*/
+ /*       
+        String dim_s = JOptionPane.showInputDialog("Ingrese la dimansion de su matriz\n(Cuadrada por favor)");
+        int dim = Integer.parseInt(dim_s);
+            
+        int mat[][]=new int [100][100];
+        int i , iz;
+        float redondo,res;
+        
+        
+        for(i=0; i<=(dim-1); i++){                      //inicializado matriz
+            for (iz=0; iz<=(dim-1); iz++){
+                redondo= (float)Math.random()*10;
+                mat[i][iz]=(int)redondo;
+            }
+        }
+        
+        for (i=0; i<=(dim-1); i++){                      //muestro matriz
+            for (iz=0; iz<=(dim-1); iz++){
+                if(iz==(dim-1))
+                    System.out.println(mat[i][iz]);
+                else
+                    System.out.print(mat[i][iz]+"  ");
+            }
+        }
+        
+         System.out.println("");
+         System.out.print("El elemento central es: ");
+         
+          for (i=0; i<=(dim-1);i++){                      //muestro elemento central
+            for (iz=0; iz<=(dim-1);iz++){
+                if(((dim)%2)!=0){
+                    res=((dim%2)+(dim/2));
+                    if(i==(res-1)&& iz==(res-1))
+                    System.out.println(mat[i][iz]);
+                }else{
+                    System.out.println("No tiene elemento central\nIngrese una matriz de dimension impar");
+                }              
+            }
+        }        
+        
+    }   // Fin public static void main ejercicio 2.a
+ */   
+/*EJERCICIO 2.b) 
+    
+        int mat[][]=new int [9][9];
+        int i , iz;
+        float redondo;
+        
+        
+        for(i=0; i<=(dim-1); i++){                      //inicializado matriz
+            for (iz=0; iz<=(dim-1); iz++){
+                redondo= (char)(float)Math.random()*300;
+                mat[i][iz]=(int)redondo;
+            }
+        }
+        
+        for (i=0; i<=(dim-1); i++){                      //muestro matriz
+            for (iz=0; iz<=(dim-1); iz++){
+                if(iz==(dim-1))
+                    System.out.println(mat[i][iz]);
+                else
+                    System.out.print(mat[i][iz]+"  ");
+            }
+            if(mat[i][iz] == mat[i][2])
+        }
+        
+       
+        
+    }   // Fin public class static void main ejercicio 2.b
+ */   
+}   // Fin class  
