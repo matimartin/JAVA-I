@@ -1,0 +1,102 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package tp_procedimientosyfunciones;
+
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author matias
+ */
+public class TP_ProcedimientosYFunciones {
+
+    static double base, altura, superficie, perimetro, raiz, resultado_raiz, entero;
+    
+    public static void main(String[] args) {
+        
+/*Desarrolle el código: (En todos los casos asigne a los procedimientos y funciones un nombre que 
+identifique claramente su acción). 
+    a)Sabiendo que la fórmula de la superficie del rectángulo es: Base * Altura, y la fórmula del perímetro
+es Base^2 + Altura^2, y considerando que:
+        i) se debe desarrollar un procedimiento que calcule la superficie.
+        ii) Se debe desarrollar otro procedimiento que reciba como parámetro el resultado del cálculo y lo
+muestre en pantalla.
+        iii) Se debe desarrollar una función que calcule la superficie, 
+        iv) Se debe desarrollar otra función que calcule la superficie, 
+        v) Se debe desarrollar otra función que calcule el perímetro, que parámetro el resultado del cálculo
+y lo muestre en pantalla. utilizando variables globales, sin recibir parámetros. recibiendo como parámetros,
+los datos necesarios para el cálculo. reciba como parámetros los datos necesarios para el cálculo. */        
+             
+    String base_s, altura_s, raiz_s;
+ 
+    base_s = JOptionPane.showInputDialog("Ingrese la BASE del rectangulo");
+    altura_s = JOptionPane.showInputDialog("Ingrese la ALTURA del rectangulo");
+    raiz_s = JOptionPane.showInputDialog("Ingrese el numero al cual quiere calcular la raiz: ");
+    
+    base = Double.parseDouble(base_s.trim());
+    altura = Double.parseDouble(altura_s.trim());
+    raiz = Double.parseDouble(raiz_s);
+    
+    calcular_superficie(base, altura);
+    calcular_perimetro(base, altura);
+    calcular_raiz(raiz);
+    
+    entero = (int) resultado_raiz;
+    
+    mostrar_superficie(superficie);
+    mostrar_perimetro(perimetro);
+    mostrar_resultado_raiz(resultado_raiz);
+    //mostrar_entero(entero);
+    
+ 
+
+      } //Fin public static Void Main
+      
+      public static void calcular_superficie(double base, double altura){
+          
+           superficie  = (base*altura);
+           
+  } // Fin procedimiento public static void calcular_superficie
+      
+      public static void calcular_perimetro(double base, double altura){
+      
+          perimetro = (base*base + altura*altura);
+      
+      } // Fin procedimiento public static void calcular_perimetro
+      
+      public static void calcular_raiz(double raiz){
+          
+          resultado_raiz = Math.sqrt(raiz);
+      
+      }
+      
+      public static void mostrar_superficie(double s){
+          
+          System.out.println("Superficie: " + s);       
+      
+      } // Fin procedimiento public static void mostrar
+      
+     
+      public static void mostrar_perimetro(double p){
+          
+          System.out.println("Perimetro: " + p);
+          
+      }
+      
+     public static void mostrar_resultado_raiz(double r){ 
+         
+         System.out.println("resultado de la raiz: "+r);
+         
+     }
+     
+     public static void mostrar_entero(int e){
+     
+         System.out.println("raiz cuadrada en entero: "+e);
+         
+     }
+    
+}   //fin public class
