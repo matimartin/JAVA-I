@@ -1,0 +1,63 @@
+/*
+ * Hola mundo es una clase creada especificamente para pruebas de programas
+ */
+
+package hola_mundo;
+
+import javax.swing.JOptionPane;
+import java.util.Arrays;
+
+public class Hola_mundo {
+    
+    
+    public static void ordenamiento(int[] vec, int[][] matr, int dim){
+        
+        vec[0] = matr[0][0];
+        vec[1] = matr[0][dim-1];
+        vec[2] = matr[dim-1][0];
+        vec[3] = matr[dim-1][dim-1];   
+        
+        Arrays.sort(vec);
+        System.out.println("");
+        System.out.println(""+vec[0]+" "+vec[1]+" "+vec[2]+" "+vec[3]);
+        
+    }                                                               // Fin metodo tipo procedimiento "ordenaminento"
+ 
+
+    public static void main(String[] args) {
+    
+        int matriz[][] = new int [100][100];
+        int vector[] = new int [4];
+        String pregunta_dim;
+        int dim;
+        
+        pregunta_dim = JOptionPane.showInputDialog("Indique la Dimensión cuadrada (menor o igual 100x100)");
+        dim = Integer.parseInt(pregunta_dim.trim());
+        
+      //  while (matriz[0][0] == matriz[0][dim] || matriz[0][0] == matriz[dim][0] || matriz[0][0] == matriz[dim][dim] || matriz[0][dim] == matriz[dim][0]){
+       
+/* Procedimiento para armar la matriz */
+        for(int i=0; i < dim; i++){
+            for(int j=0; j < dim; j++){
+                matriz[i][j] = (int)(Math.random()*10);             // Random utiliza valores del 0.1 al 0.9
+                
+            }                                                       // Fin bucle for matriz (valores j)         
+        }                                                           // Fin bucle for matriz (valores i)    
+        
+      //  }                                                           // Fin bucle while
+        
+/* Procedimiento para mostrar la matriz */     
+        for(int i=0; i < dim; i++){
+            for(int j=0; j < dim; j++){
+                if(j == (dim-1))
+                    System.out.println(matriz[i][j]+" ");
+                else
+                    System.out.print(matriz[i][j]+" ");                
+            }                                                       // Fin bucle for
+        }                                                           // Fin bucle for
+        
+        ordenamiento(vector, matriz, dim);    
+
+    }                                                               // Fin public static void main
+    
+}                                                                   // Fin clase hola mundo
